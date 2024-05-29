@@ -67,10 +67,10 @@ int main(int argc, char** argv) {
     }
 
     std::vector<std::vector<int>> C(rowsA, std::vector<int>(colsB, 0));
-    multiplyMatricesWithoutErrors(A, B, C, rowsA, colsA, colsB);
+    multiplyMatrices(A, B, C, rowsA, colsA, colsB);
 
     if (rank == 0) {
-        std::cout << "Resultant Matrix C:" << std::endl;
+        std::cout << "Congratulations, bro. Here is your resultant matrix C:" << std::endl;
         for (const auto& row : C) {
             for (const auto& elem : row) {
                 std::cout << elem << " ";
