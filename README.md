@@ -1,6 +1,6 @@
 # SE4HPCproject
 
-# Step 2 -- From build to release and manual job execution 
+## Step 2 -- From build to release and manual job execution 
 
 Focus now on the correct implementation of the matrix multiplication you
 find in <https://github.com/SimoneReale/SE4HPC_project_part2>. This is a
@@ -40,7 +40,7 @@ building and testing process.
 -   Push on your github repository your job.sh file and the files
     obtained from the execution of the matrix multiplication.
 
-# Step 3 -- Automating a job submission with containerization 
+## Step 3 -- Automating a job submission with containerization 
 
 Extend the action you have created at step 3 to automate completely the
 process from a push on the repository to the execution of the
