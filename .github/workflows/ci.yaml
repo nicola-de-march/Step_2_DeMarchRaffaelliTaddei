@@ -11,6 +11,19 @@ jobs:
         - name: Set up CMake
           uses: jwlawson/actions-setup-cmake@v1
 
+        - name: Set up Singularity
+          uses: eWaterCycle/setup-singularity@v7
+
+        - name: Cache
+          uses: actions/cache@v4
+          with:
+            path: |
+              build
+              ~/.cache
+            key: ${{ runner.os }}-cmake-${{ hashFiles('**/CMakeLists.txt') }}
+            restore-keys: |
+              ${{ runner.os }}-cmake-
+
         - name: Install dependencies
           run: sudo apt-get update && sudo apt-get install -y build-essential cmake libopenmpi-dev openmpi-bin
 
@@ -28,3 +41,18 @@ jobs:
         
         - name: Run Tests
           run: ctest --test-dir build
+
+        - name: Build Singularity Image
+          run: |
+                sudo apt-get update && sudo apt-get install -y \
+                  singularity-container
+                sudo singularity build MatMultiplication.sif Singularity.def
+        
+        - name: Run Singularity image
+          run: singularity run MatMultiplication.sif
+
+        - name: Upload Singularity image as artifact
+          uses: actions/upload-artifact@v4
+          with:
+            name: matmultiplication-image
+            path: MatMultiplication.sif
