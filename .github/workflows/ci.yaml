@@ -16,6 +16,9 @@ jobs:
 
         - name: Create build directory
           run: mkdir -p build
+        
+        - name: Initialize submodule
+          run: git submodule update --init --recursive
 
         - name: Configure CMake
           run: cmake -S . -B build
