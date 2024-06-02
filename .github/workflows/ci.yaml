@@ -10,10 +10,13 @@ jobs:
         
         - name: Set up CMake
           uses: jwlawson/actions-setup-cmake@v1
-
+          
         - name: Set up Singularity
           uses: eWaterCycle/setup-singularity@v7
-
+          with:
+            # Version of singularity to setup
+            singularity-version: 3.6.1
+          
         - name: Cache
           uses: actions/cache@v4
           with:
