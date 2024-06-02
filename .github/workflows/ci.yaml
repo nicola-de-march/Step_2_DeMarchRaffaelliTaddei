@@ -10,7 +10,11 @@ jobs:
         
         - name: Set up CMake
           uses: jwlawson/actions-setup-cmake@v1
-          
+
+        - uses: eWaterCycle/setup-singularity@v7
+          with:
+            singularity-version: 3.8.3
+
         - name: Cache
           uses: actions/cache@v4
           with:
@@ -40,10 +44,7 @@ jobs:
           run: ctest --test-dir build
 
         - name: Build Singularity Image
-          run: |
-                sudo apt-get update && sudo apt-get install -y \
-                  singularity-container
-                sudo singularity build MatMultiplication.sif Singularity.def
+          run:  sudo singularity build MatMultiplication.sif Singularity.def
         
         - name: Run Singularity image
           run: singularity run MatMultiplication.sif
