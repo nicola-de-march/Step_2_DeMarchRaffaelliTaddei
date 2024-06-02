@@ -4,7 +4,7 @@ FROM ubuntu:20.04
 # Set the environment variable to avoid interactive prompts
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install dependencies
+# Install dependencies like MPI 
 RUN apt-get update && apt-get install -y \
     build-essential \
     cmake \

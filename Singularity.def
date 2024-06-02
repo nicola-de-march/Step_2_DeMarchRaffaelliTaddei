@@ -1,0 +1,38 @@
+Bootstrap: docker
+From: ubuntu:20.04
+
+%environment
+    export DEBIAN_FRONTEND=noninteractive
+
+%post
+    # Install dependencies
+    apt-get update && apt-get install -y \
+        build-essential \
+        cmake \
+        git \
+        tzdata \
+        mpich \
+        libmpich-dev \
+        && rm -rf /var/lib/apt/lists/*
+    
+    # Set the working directory
+    mkdir -p /app
+    cd /app
+
+    # Clean up
+    cd /app
+    rm -rf googletest
+
+%files
+    . /app
+
+%post
+    cd /app
+    mkdir -p build
+    cd build
+    cmake ..
+    make
+
+%runscript
+    cd /app/build
+    ctest --output-on-failure
