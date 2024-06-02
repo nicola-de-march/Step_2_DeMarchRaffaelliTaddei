@@ -11,7 +11,8 @@ jobs:
         - name: Set up CMake
           uses: jwlawson/actions-setup-cmake@v1
 
-        - uses: eWaterCycle/setup-singularity@v7
+        - name: Set up Singularity
+          uses: eWaterCycle/setup-singularity@v7
           with:
             singularity-version: 3.8.3
 
@@ -44,7 +45,7 @@ jobs:
           run: ctest --test-dir build
 
         - name: Build Singularity Image
-          run:  sudo singularity build MatMultiplication.sif Singularity.def
+          run:  singularity build --fakeroot MatMultiplication.sif Singularity.def
         
         - name: Run Singularity image
           run: singularity run MatMultiplication.sif
