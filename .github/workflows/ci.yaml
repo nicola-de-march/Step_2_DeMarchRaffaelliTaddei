@@ -5,6 +5,7 @@ on: [push, pull_request]
 jobs:
     build: 
         runs-on: ubuntu-latest
+        if: "github.actor != 'github-actions[bot]'"
         steps:
         - uses: actions/checkout@v4
         
@@ -53,6 +54,8 @@ jobs:
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: |
+              git config --global user.email "nicola.demarch@mail.polimi.it"
+              git config --global user.name "nicola-de-march"
               git add MatMultiplication.sif
               git commit -m "Add Singularity image"
               git push
