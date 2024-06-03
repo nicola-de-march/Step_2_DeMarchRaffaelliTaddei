@@ -61,7 +61,7 @@ jobs:
             PW_CINECA: ${{ secrets.PW_CINECA }}
             HOST_CINECA: ${{ secrets.HOST_CINECA }}
           run:
-            sshpass -p "$PW_CINECA" StrictHostKeyChecking=no 'scp MatMultiplication.sif $HOST_CINECA:/g100/home/usertrain/a08trb62' 
+            sshpass -p "$PW_CINECA" ssh -o StrictHostKeyChecking=no a08trb62@login.g100.cineca.it 'cd /g100/home/usertrain/a08trb62/SE4HPC && sbatch job.sh'
 
 
 
