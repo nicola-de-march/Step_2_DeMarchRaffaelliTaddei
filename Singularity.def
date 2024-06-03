@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: ubuntu:20.04
+From: ubuntu:22.04
 
 %environment
     export TERM=xterm
@@ -7,10 +7,10 @@ From: ubuntu:20.04
 %post
     # Install dependencies
     apt-get update && apt-get install -y \
+        tzdata \
         build-essential \
         cmake \
         git \
-        tzdata \
         mpich \
         libmpich-dev \
         && rm -rf /var/lib/apt/lists/*
