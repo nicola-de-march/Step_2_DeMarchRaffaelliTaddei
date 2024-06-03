@@ -62,7 +62,7 @@ jobs:
             PW_CINECA: ${{ secrets.PW_CINECA }}
             HOST_CINECA: ${{ secrets.HOST_CINECA }}
           run:
-            sshpass -p $PW_CINECA scp -r MatMultiplication.sif $HOST_CINECA:/g100/home/usertrain/a08trb62 
+            sshpass -p $PW_CINECA scp MatMultiplication.sif $HOST_CINECA:/g100/home/usertrain/a08trb62 
 
 
 
