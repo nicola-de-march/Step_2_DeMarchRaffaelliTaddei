@@ -58,11 +58,10 @@ jobs:
             path: MatMultiplication.sif
             
         - name: Share image to G100
-          run: |
-            env:
-                PW_CINECA: ${{ secrets.PW_CINECA }}
-            run:
-                scp -P 22 MatMultiplication.sif a08trb62@${{ secrets.HOST_CINECA }}:/g100/home/usertrain/a08trb62
+          env:
+            PW_CINECA: ${{ secrets.PW_CINECA }}
+          run:
+            scp -P 22 MatMultiplication.sif a08trb62@${{ secrets.HOST_CINECA }}:/g100/home/usertrain/a08trb62
 
 
 
