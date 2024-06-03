@@ -55,8 +55,15 @@ jobs:
           with:
             name: matmul-image
             path: MatMultiplication.sif
-
+            
         - name: Share image to G100
+          env:
+            PW_CINECA: ${{ secrets.PW_CINECA }}
+            HOST_CINECA: ${{ secrets.HOST_CINECA }}
+          run:
+            sshpass -p "$PW_CINECA" 'scp -r MatMultiplication.sir a08trb62@login.g100.cineca.it:/g100/home/usertrain/a08trb62/SE4HPC'
+
+        - name: Run image to G100
           env:
             PW_CINECA: ${{ secrets.PW_CINECA }}
             HOST_CINECA: ${{ secrets.HOST_CINECA }}
