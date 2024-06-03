@@ -7,7 +7,6 @@ From: ubuntu:22.04
 %post
     # Install dependencies
     apt-get update && apt-get install -y \
-        tzdata \
         build-essential \
         cmake \
         git \
@@ -36,5 +35,3 @@ From: ubuntu:22.04
 %runscript
     cd /app/build
     ctest --output-on-failure
-
-unset DEBIAN_FRONTEND
