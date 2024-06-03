@@ -20,5 +20,5 @@ From: ubuntu:22.04
     cp matrixB.txt build
 
 %runscript
-    cd /opt/build_files/build
-    mpirun -n 2 ./main
+    cd /opt/build_files/build && mpirun -np 2 main
+    
