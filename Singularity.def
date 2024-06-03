@@ -19,5 +19,4 @@ From: ubuntu:22.04
 
 %runscript
     cd /opt/build_files/build
-    export TMPDIR=/scratch
     mpirun -n 2 ./main
