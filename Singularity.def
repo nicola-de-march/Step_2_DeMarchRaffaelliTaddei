@@ -1,9 +1,8 @@
 Bootstrap: docker
 From: ubuntu:22.04
 
-%environment
-    export TERM=xterm
-    export DEBIAN_FRONTEND=noninteractive
+%files
+    . /opt/build_files
 %post
     # Install dependencies
     apt-get update && apt-get install -y \
@@ -13,13 +12,11 @@ From: ubuntu:22.04
     cmake \
     libopenmpi-dev
                       
-    # Set the working directory
-    mkdir -p /app
-    cd /app
-
-    # Clean up
-    cd /app
-    rm -rf googletest
+    cd /opt/build_files
+    ls -la
+    rm -rf build
+    chmod +x build.sh
+    ./build.sh
 
 %files
     . /app
@@ -32,5 +29,4 @@ From: ubuntu:22.04
     make
 
 %runscript
-    cd /app/build
-    ctest --output-on-failure
+    cd /opt/build_files/build && mpirun -n 2 main
