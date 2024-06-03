@@ -3,6 +3,8 @@ From: ubuntu:20.04
 
 %environment
     export DEBIAN_FRONTEND=noninteractive
+    export LC_ALL=C
+    export PATH=/usr/games:$PATH
 
 %post
     # Install dependencies
