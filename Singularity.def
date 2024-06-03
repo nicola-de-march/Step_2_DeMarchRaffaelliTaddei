@@ -16,9 +16,9 @@ From: ubuntu:22.04
     rm -rf build
     chmod +x build.sh
     ./build.sh
-
-%runscript
-    cd /opt/build_files
     cp matrixA.txt build
     cp matrixB.txt build
+
+%runscript
+    cd /opt/build_files/build
     mpirun -n 2 ./main
