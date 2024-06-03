@@ -18,5 +18,7 @@ From: ubuntu:22.04
     ./build.sh
 
 %runscript
-    cd /opt/build_files/build
+    cd /opt/build_files
+    cp matrixA.txt build
+    cp matrixB.txt build
     mpirun -n 2 ./main
