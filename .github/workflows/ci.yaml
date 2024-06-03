@@ -49,9 +49,11 @@ jobs:
         
         - name: Run Singularity image
           run: singularity run MatMultiplication.sif
-
-        - name: Upload Singularity image as artifact
-          uses: actions/upload-artifact@v4
-          with:
-            name: matmultiplication-image
-            path: MatMultiplication.sif
+        - name: Commit and Push Singularity Image
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: |
+              git add MatMultiplication.sif
+              git commit -m "Add Singularity image"
+              git push
+              
