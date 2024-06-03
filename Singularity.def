@@ -13,11 +13,11 @@ From: ubuntu:22.04
     libopenmpi-dev
                       
     cd /opt/build_files
-    ls -la
     rm -rf build
     chmod +x build.sh
     ./build.sh
+
 %runscript
     cd /opt/build_files/build
-    ls -la
+    export TMPDIR=/scratch
     mpirun -n 2 ./main
