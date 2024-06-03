@@ -18,7 +18,6 @@ From: ubuntu:22.04
     chmod +x build.sh
     ./build.sh
 %runscript
-    cd /opt/build_files
     cd /opt/build_files/build
     ls -la
     mpirun -n 2 ./main
