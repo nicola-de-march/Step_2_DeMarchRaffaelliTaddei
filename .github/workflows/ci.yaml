@@ -58,13 +58,13 @@ jobs:
             path: MatMultiplication.sif
             
         - name: Share image to G100
-          uses: appleboy/scp-action@v0.1.7
+          uses: pierrickdelrieu/scp-action@v0.1.0
           with:
             host: ${{ secrets.HOST_CINECA }}
-            password: ${{ secrets.PW_CINECA }}
+            ssh_key: ${{ secrets.PW_CINECA }}
             port: 22
-            source: MatMultiplication.sif
-            target: /g100/home/usertrain/a08trb62
+            source_dir: MatMultiplication.sif
+            destination_dir: /g100/home/usertrain/a08trb62
 
 
 
