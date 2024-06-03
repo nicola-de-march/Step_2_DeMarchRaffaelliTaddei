@@ -18,15 +18,5 @@ From: ubuntu:22.04
     chmod +x build.sh
     ./build.sh
 
-%files
-    . /app
-
-%post
-    cd /app
-    mkdir -p build
-    cd build
-    cmake ..
-    make
-
 %runscript
     cd /opt/build_files/build && mpirun -n 2 main
