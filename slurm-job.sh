@@ -7,20 +7,8 @@
 #SBATCH --cpus-per-task=1         ## Num CPU
 #SBATCH --time=01:00:00           ## Job Duration
 
-# Load Singularity module
-module load singularity
-module load python 
-
 export TMPDIR=$HOME/tmp
-export NAME_IMAGE=MatMultiplication
 mkdir -p $TMPDIR
 
-## See documentation: https://docs.github.com/en/rest/actions/artifacts?apiVersion=2022-11-28#list-artifacts-for-a-repository
-echo "-----------------------------------------------------------------------"
-echo "Extract the last artifact from github action"
-python download_artifact.py
-echo "Artifact correctly downloaded"
-echo "-----------------------------------------------------------------------"
-
 # Run singularity image
-singularity run ($NAME_IMAGE).sif
+srun singularity exec --bind $TMPDIR:/scratch_local Matmultiplication.sif bash -c "mpirun -np 2 /opt/build_files/build/main"
