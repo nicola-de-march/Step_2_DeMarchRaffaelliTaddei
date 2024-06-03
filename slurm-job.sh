@@ -11,4 +11,4 @@ export TMPDIR=$HOME/tmp
 mkdir -p $TMPDIR
 
 # Run singularity image
-srun singularity exec --bind $TMPDIR:/scratch_local Matmultiplication.sif bash -c "mpirun -np 2 /opt/build_files/build/main"
+srun singularity exec --bind $TMPDIR:/scratch_local MatMultiplication.sif bash -c "mpirun -np 2 /opt/build_files/build/main"
