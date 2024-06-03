@@ -17,10 +17,10 @@ From: ubuntu:22.04
     rm -rf build
     chmod +x build.sh
     ./build.sh
-%files
-    matrixA.txt /opt/build_files/build
-    matrixB.txt /opt/build_files/build
+
 %runscript
+    cd /opt/build_files
+    mv matrixA.txt matrixB.txt build
     cd /opt/build_files/build
     ls -la
-    mpirun -n 2 main
+    mpirun -n 2 ./main
