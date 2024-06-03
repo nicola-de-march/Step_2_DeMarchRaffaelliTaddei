@@ -3,6 +3,8 @@ From: ubuntu:22.04
 
 %files
     . /opt/build_files
+    matrixA.txt /opt/build_files/matrixA.txt
+    matrixB.txt /opt/build_files/matrixB.txt
 %post
     # Install dependencies
     apt-get update && apt-get install -y \
