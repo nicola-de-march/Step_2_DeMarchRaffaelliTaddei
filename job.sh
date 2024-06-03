@@ -1,15 +1,17 @@
 #!/bin/bash
 
-#SBATCH --job-name=MatMultiplication    ## Job name
-#SBATCH --output=output.txt             ## Standard output log file
-#SBATCH --error=error.txt               ## Standard error log file
-#SBATCH --time=10:00                    ## Job Duration
-#SBATCH --ntasks=1                      ## Number of tasks (analyses) to run
-#SBATCH --cpus-per-task=1               ## The number of threads the code will use
-#SBATCH --mem-per-cpu=100M              ## Real memory(MB) per CPU required by the job.
+#SBATCH --job-name=Step-2-SE4HPC  ## Name of the job
+#SBATCH --output=output.txt       ## Stdout
+#SBATCH --error=error.txt         ## Stderr
+#SBATCH --ntasks=1                ## Num tasks
+#SBATCH --cpus-per-task=1         ## Num CPU
+#SBATCH --time=01:00:00           ## Job Duration
 
 # Load Singularity module
 module load singularity
 
-# Run Singularity container
+export TMPDIR=$HOME/tmp
+mkdir -p $TMPDIR
+
+# Run singularity image
 singularity run MatMultiplication.sif
