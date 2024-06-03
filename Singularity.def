@@ -3,8 +3,6 @@ From: ubuntu:22.04
 
 %files
     . /opt/build_files
-    matrixA.txt /opt/build_files/matrixA.txt
-    matrixB.txt /opt/build_files/matrixB.txt
 %post
     # Install dependencies
     apt-get update && apt-get install -y \
@@ -19,6 +17,7 @@ From: ubuntu:22.04
     rm -rf build
     chmod +x build.sh
     ./build.sh
+    ls -la
 
 %runscript
     cd /opt/build_files/build && mpirun -n 2 main
