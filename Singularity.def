@@ -17,7 +17,9 @@ From: ubuntu:22.04
     rm -rf build
     chmod +x build.sh
     ./build.sh
-
+%files
+    /opt/build_files/matrixA.txt /opt/build_files/build
+    /opt/build_files/matrixB.txt /opt/build_files/build
 %runscript
     cd /opt/build_files
     mv matrixA.txt matrixB.txt build
