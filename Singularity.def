@@ -36,3 +36,5 @@ From: ubuntu:20.04
 %runscript
     cd /app/build
     ctest --output-on-failure
+
+unset DEBIAN_FRONTEND
