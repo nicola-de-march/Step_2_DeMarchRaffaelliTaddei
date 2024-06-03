@@ -62,6 +62,7 @@ jobs:
           with:
             host: ${{ secrets.HOST_CINECA }}
             password: ${{ secrets.PW_CINECA }}
+            port: 22
             source: MatMultiplication.sif
             target: /g100/home/usertrain/a08trb62
 
