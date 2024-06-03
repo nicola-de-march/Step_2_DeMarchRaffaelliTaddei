@@ -2,10 +2,8 @@ Bootstrap: docker
 From: ubuntu:20.04
 
 %environment
+    export TERM=xterm
     export DEBIAN_FRONTEND=noninteractive
-    export LC_ALL=C
-    export PATH=/usr/games:$PATH
-
 %post
     # Install dependencies
     apt-get update && apt-get install -y \
