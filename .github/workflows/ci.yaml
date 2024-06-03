@@ -63,7 +63,7 @@ jobs:
           run: |
             sshpass -p "$PW_CINECA" scp -o StrictHostKeyChecking=no MatMultiplication.sif a08trb62@login.g100.cineca.it:/g100/home/usertrain/a08trb62/Step_2_DeMarchRaffaelliTaddei
 
-        - name: Run image to G100
+        - name: Run image on G100
           env:
             PW_CINECA: ${{ secrets.PW_CINECA }}
             HOST_CINECA: ${{ secrets.HOST_CINECA }}
