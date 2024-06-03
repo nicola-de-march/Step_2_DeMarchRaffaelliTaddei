@@ -5,7 +5,6 @@ on: [push, pull_request]
 jobs:
     build: 
         runs-on: ubuntu-latest
-        if: "github.actor != 'github-actions[bot]'"
         steps:
         - uses: actions/checkout@v4
         
@@ -56,15 +55,13 @@ jobs:
           with:
             name: matmul-image
             path: MatMultiplication.sif
-            
+
         - name: Share image to G100
-          uses: pierrickdelrieu/scp-action@v0.1.0
-          with:
-            host: ${{ secrets.HOST_CINECA }}
-            ssh_key: ${{ secrets.PW_CINECA }}
-            port: 22
-            source_dir: MatMultiplication.sif
-            destination_dir: /g100/home/usertrain/a08trb62
+          env:
+            PW_CINECA: ${{ secrets.PW_CINECA }}
+            HOST_CINECA: ${{ secrets.HOST_CINECA }}
+          run:
+            sshpass -p "$PW_CINECA" StrictHostKeyChecking=no 'scp MatMultiplication.sif $HOST_CINECA:/g100/home/usertrain/a08trb62' 
 
 
 
