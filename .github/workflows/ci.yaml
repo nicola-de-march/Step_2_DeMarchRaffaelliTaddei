@@ -49,6 +49,12 @@ jobs:
         
         - name: Run Singularity image
           run: singularity run MatMultiplication.sif
+          
+        - name: Save Singularity image
+          uses: actions/upload-artifact@v4
+          with:
+            name: matmul-image
+            path: MatMultiplication.sif
             
         - name: Share image to G100
           env:
