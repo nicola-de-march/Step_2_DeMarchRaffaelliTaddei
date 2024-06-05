@@ -3,8 +3,8 @@
 #SBATCH --job-name=Step-2-SE4HPC  ## Name of the job
 #SBATCH --output=output.txt       ## Stdout
 #SBATCH --error=error.txt         ## Stderr
-#SBATCH --ntasks=1                ## Num tasks
-#SBATCH --cpus-per-task=1         ## Num CPU
+#SBATCH --ntasks=2                ## Num tasks
+#SBATCH --cpus-per-task=2         ## Num CPU
 #SBATCH --time=01:00:00           ## Job Duration
 
 export TMPDIR=$HOME/tmp
