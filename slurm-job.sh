@@ -7,8 +7,4 @@
 #SBATCH --cpus-per-task=1         ## Num CPU
 #SBATCH --time=01:00:00           ## Job Duration
 
-export TMPDIR=$HOME/tmp
-mkdir -p $TMPDIR
-
-# Run singularity image
-srun singularity exec --bind $TMPDIR:/scratch_local MatMultiplication.sif bash -c "mpirun -np 2 /opt/build_files/build/main"
+mpirun -n 2 singularity exec MatMultiplication.sif /opt/build_files/build/main

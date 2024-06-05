@@ -69,7 +69,7 @@ jobs:
             HOST_CINECA: ${{ secrets.HOST_CINECA }}
           run: |
             ssh-keygen -f "/home/runner/.ssh/known_hosts" -R "login.g100.cineca.it"
-            sshpass -p "$PW_CINECA" ssh -o StrictHostKeyChecking=no a08trb62@login.g100.cineca.it 'cd /g100/home/usertrain/a08trb62/Step_2_DeMarchRaffaelliTaddei && git pull && sbatch slurm-job.sh'
+            sshpass -p "$PW_CINECA" ssh -o StrictHostKeyChecking=no a08trb62@login.g100.cineca.it 'cd /g100/home/usertrain/a08trb62/Step_2_DeMarchRaffaelliTaddei && git pull && sbatch slurm-job.sh && cat output.txt'
 
 
 
