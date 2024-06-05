@@ -1,7 +1,11 @@
+
+# Singularity definition file
+
 Bootstrap: docker
 From: ubuntu:22.04
 
 %files
+    # Copy all files from the current directory on the host to /opt/build_files in the container
     . /opt/build_files
 %post
     # Install dependencies
@@ -11,14 +15,20 @@ From: ubuntu:22.04
     openmpi-common \
     cmake \
     libopenmpi-dev
-                      
+
+    # Navigate to the /opt/build_files directory                
     cd /opt/build_files
+    # Remove any existing build directory
     rm -rf build
+    # Make the build script executable
     chmod +x build.sh
+    # Run the build script
     ./build.sh
+    # Copy matrix files to the build directory
     cp matrixA.txt build
     cp matrixB.txt build
 
 %runscript
+    # Navigate to the build directory and run the main program with mpirun
     cd /opt/build_files/build && mpirun -np 2 main
     

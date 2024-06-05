@@ -10,6 +10,7 @@
 # Load Singularity module
 module load singularity
 
+# Export the TMPDIR variable and create the temporary directory
 export TMPDIR=$HOME/tmp
 mkdir -p $TMPDIR
 
