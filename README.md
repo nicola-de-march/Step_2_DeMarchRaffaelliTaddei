@@ -13,7 +13,7 @@ Building upon the CI/CD pipeline created in Step 2, the step 3 aims to fully aut
 - `googletest @ 305e5a2/`: Submodule for the Google Test framework, providing unit testing capabilities.
 - `include/`: Contains header files for the project, including function declarations and definitions.
 - `lib/`: Holds project libraries necessary for implementing matrix multiplication.
-- `output-G100/`: Contains `Job.sh` file and G100 server output, including scripts and results obtained from execution on the server.
+- `output-G100/`: Contains `Job.sh` file and Galileo100 server output, including scripts and results obtained from execution on the server.
 - `src/`: Contains source files for the project, implementing the main logic for matrix multiplication.
 - `test/`: Contains test files for the project, verifying the correctness of the matrix multiplication implementation.
 - `.gitignore`: Specifies files and directories to ignore in version control, avoiding inclusion of temporary or irrelevant files in the Git repository.
@@ -26,8 +26,6 @@ Building upon the CI/CD pipeline created in Step 2, the step 3 aims to fully aut
 - `matrixA.txt`: Provides data for matrix A for multiplication.
 - `matrixB.txt`: Provides data for matrix B for multiplication.
 - `slurm-job.sh`: Defines commands to execute the work via the Slurm job manager.
-
-This repository structure organizes various aspects of the project, including configuration files, source files, test files, and automation scripts needed for development, testing, and execution of matrix multiplication.
 
 ## Contributors
 
