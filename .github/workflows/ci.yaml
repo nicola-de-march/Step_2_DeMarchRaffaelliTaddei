@@ -6,16 +6,20 @@ jobs:
     build: 
         runs-on: ubuntu-latest
         steps:
+        # Checks out the repository code
         - uses: actions/checkout@v4
         
+        # Sets up CMake in the environment
         - name: Set up CMake
           uses: jwlawson/actions-setup-cmake@v2
           
+        # Sets up Singularity with the specified version
         - name: Set up Singularity
           uses: eWaterCycle/setup-singularity@v7
           with:
             singularity-version: 3.8.3
           
+        # Caches the build and dependency files to speed up future builds
         - name: Cache
           uses: actions/cache@v4
           with:
@@ -26,36 +30,46 @@ jobs:
             restore-keys: |
               ${{ runner.os }}-cmake-
 
+        # Installs necessary dependencies for building and testing
         - name: Install dependencies
           run: sudo apt-get update && sudo apt-get install -y build-essential cmake libopenmpi-dev openmpi-bin
 
+        # Creates the build directory if it doesn't exist
         - name: Create build directory
           run: mkdir -p build
         
+        # Initializes and updates the git submodules
         - name: Initialize submodule
           run: git submodule update --init --recursive
 
+        # Configures the project using CMake
         - name: Configure CMake
           run: cmake -S . -B build
         
+        # Builds the project
         - name: Build
           run: cmake --build build
         
+        # Runs the project's tests
         - name: Run Tests
           run: ctest --test-dir build
 
+        # Builds the Singularity image using the definition file
         - name: Build Singularity Image
           run:  singularity build --fakeroot MatMultiplication.sif Singularity.def
-        
+
+        # Runs the Singularity image
         - name: Run Singularity image
           run: singularity run MatMultiplication.sif
           
+        # Saves the Singularity image as an artifact
         - name: Save Singularity image
           uses: actions/upload-artifact@v4
           with:
             name: matmul-image
             path: MatMultiplication.sif
 
+        # Uploads the Singularity image to the remote G100 server
         - name: Share image to G100
           env:
             PW_CINECA: ${{ secrets.PW_CINECA }}
@@ -63,6 +77,7 @@ jobs:
           run: |
             sshpass -p "$PW_CINECA" scp -o StrictHostKeyChecking=no MatMultiplication.sif a08trb62@login.g100.cineca.it:/g100/home/usertrain/a08trb62/Step_2_DeMarchRaffaelliTaddei
 
+        # Runs the Singularity image on the G100 server using a SLURM job
         - name: Run image on G100
           env:
             PW_CINECA: ${{ secrets.PW_CINECA }}

@@ -7,8 +7,9 @@
 #SBATCH --cpus-per-task=1         ## Num CPU
 #SBATCH --time=01:00:00           ## Job Duration
 
+# Export the TMPDIR variable and create the temporary directory
 export TMPDIR=$HOME/tmp
 mkdir -p $TMPDIR
 
-# Run singularity image
+# Run the Singularity image: srun executes the specified command with the allocated resources
 srun singularity exec --bind $TMPDIR:/scratch_local MatMultiplication.sif bash -c "mpirun -np 2 /opt/build_files/build/main"
