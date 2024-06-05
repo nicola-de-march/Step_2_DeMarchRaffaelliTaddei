@@ -3,9 +3,9 @@
 ## Objective
 This project aims to perform a parallel matrix multiplication using MPI using the two matrices contained in the files `matrixA.txt` and `matrixB.txt`.
 
-In the step 2, the focus is on implementing a CI/CD pipeline for a parallel matrix multiplication application using MPI. The process involves automating the build, test, and release processes, containerizing the application with Singularity, and executing the containerized application on a SLURM cluster. The goal is to ensure seamless deployment from code push to manual execution on the cluster.
+In the step 2, the focus is on implementing a CI/CD pipeline for a parallel matrix multiplication application using MPI. The process involves automating the build, test, and release processes, containerizing the application with Singularity, and executing the containerized application on a SLURM cluster. The goal is to ensure seamless deployment from code push to manual execution on the cluster. **From this step it is possible to download the image from the artifact**. For this step the job file is `job.sh`.
 
-Building upon the CI/CD pipeline created in Step 2, the step 3 aims to fully automate the process from code push to the execution of the containerized software on SLURM. It involves transferring the container from the runner to the cluster and handling secrets securely. The objective is to streamline the deployment process and ensure efficient execution of the containerized application on the cluster.
+Building upon the CI/CD pipeline created in Step 2, the step 3 aims to fully automate the process from code push to the execution of the containerized software on SLURM. It involves transferring the container from the runner to the cluster and handling secrets securely. The objective is to streamline the deployment process and ensure efficient execution of the containerized application on the cluster. For this step the job file is `slurm-job.sh`.
 
 ## Directory Details
 
