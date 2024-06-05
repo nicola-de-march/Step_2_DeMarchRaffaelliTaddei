@@ -63,7 +63,7 @@ jobs:
           run: singularity run MatMultiplication.sif
           
         # Saves the Singularity image as an artifact
-        - name: Save Singularity image
+        - name: Save Singularity image as artifact
           uses: actions/upload-artifact@v4
           with:
             name: matmul-image
