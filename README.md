@@ -29,3 +29,8 @@ Building upon the CI/CD pipeline created in Step 2, the step 3 aims to fully aut
 
 This repository structure organizes various aspects of the project, including configuration files, source files, test files, and automation scripts needed for development, testing, and execution of matrix multiplication.
 
+## Contributors
+
+- Nicola De March
+- Martina Raffaelli
+- Alberto Taddei
